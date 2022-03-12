@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 1
+  sender_token: MyString
+  recipient_token: MyString
+  identity: MyString
+  redirect_uri: MyString
+
+two:
+  amount: 1
+  sender_token: MyString
+  recipient_token: MyString
+  identity: MyString
+  redirect_uri: MyString
