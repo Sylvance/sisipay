@@ -2,6 +2,8 @@
 
 Crypto payments APP/API
 
+Hosted at : https://sisipay.herokuapp.com/
+
 ## Usage
 
 - Get a checkout url.
