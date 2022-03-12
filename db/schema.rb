@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_12_101531) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_12_104402) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -20,6 +20,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_12_101531) do
     t.string "recipient_token"
     t.string "identity"
     t.string "redirect_uri"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "providers", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -42,6 +48,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_12_101531) do
     t.string "checkout_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "provider"
+    t.bigint "provider_id", null: false
+    t.index ["provider_id"], name: "index_wallets_on_provider_id"
   end
 
+  add_foreign_key "wallets", "providers"
 end
