@@ -21,3 +21,8 @@ Crypto payments APP/API
 
 - Locally; `rails c`
 - Heroku; `heroku run rails c`
+
+## Contributions
+
+- To push to Github `git push`
+- To push to heroku `git push heroku main`

@@ -25,7 +25,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        cookies.signed.permanent[:auth_token] = user.auth_token
+        cookies.signed.permanent[:auth_token] = @user.auth_token
         format.html { redirect_to user_url(@user), notice: "User was successfully created." }
         format.json { render :show, status: :created, location: @user }
       else
@@ -66,6 +66,6 @@ class UsersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def user_params
-      params.require(:user).permit(:name, :email, :password_digest, :auth_token)
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :auth_token)
     end
 end
