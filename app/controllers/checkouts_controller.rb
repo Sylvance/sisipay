@@ -1,4 +1,5 @@
 class CheckoutsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_checkout, only: %i[ show edit update destroy ]
 
   # GET /checkouts or /checkouts.json
@@ -8,6 +9,8 @@ class CheckoutsController < ApplicationController
 
   # GET /checkouts/1 or /checkouts/1.json
   def show
+    @checkout.sender_token = current_user.auth_token
+    @checkout.save
   end
 
   # GET /checkouts/new
@@ -60,7 +63,7 @@ class CheckoutsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_checkout
-      @checkout = Checkout.find(params[:id])
+      @checkout = Checkout.find_by(redirect_uri: "https://sisipay.herokuapp.com/checkouts/#{params[:id]}") || Checkout.find(params[:id])  
     end
 
     # Only allow a list of trusted parameters through.

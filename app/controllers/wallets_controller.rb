@@ -1,4 +1,5 @@
 class WalletsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_wallet, only: %i[ show edit update destroy ]
 
   # GET /wallets or /wallets.json
@@ -22,6 +23,8 @@ class WalletsController < ApplicationController
   # POST /wallets or /wallets.json
   def create
     @wallet = Wallet.new(wallet_params)
+    provider = Provider.create(name: params[:wallet][:provider])
+    @wallet.provider_id = provider.id
 
     respond_to do |format|
       if @wallet.save
@@ -65,6 +68,6 @@ class WalletsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def wallet_params
-      params.require(:wallet).permit(:amount, :sender_token, :recipient_token, :checkout_url)
+      params.require(:wallet).permit(:name, :amount, :sender_token, :recipient_token, :checkout_url)
     end
 end

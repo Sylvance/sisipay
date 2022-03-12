@@ -1,7 +1,17 @@
 <div id="<%= dom_id wallet %>">
   <p>
+    <strong>Name:</strong>
+    <%= wallet.name %>
+  </p>
+
+  <p>
     <strong>Amount:</strong>
     <%= wallet.amount %>
+  </p>
+
+  <p>
+    <strong>Provider:</strong>
+    <%= Provider.find(wallet.provider_id).name %>
   </p>
 
   <p>
