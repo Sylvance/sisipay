@@ -2,6 +2,13 @@
 
 Crypto payments APP/API
 
+## Usage
+
+- Get a checkout url.
+- Put it in the client website.
+- Allow users to pay to through redirects.
+- Monitor your applications performance.
+
 ## Installation
 
 - `bundle install`
